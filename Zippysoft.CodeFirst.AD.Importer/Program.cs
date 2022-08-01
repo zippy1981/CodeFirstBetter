@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Context;
 using Serilog.Events;
+using Serilog.Sinks.SystemConsole.Themes;
 using Zippysoft.CodeFirst.DAL;
 
 var host = new HostBuilder()
@@ -13,10 +14,11 @@ var host = new HostBuilder()
     {
         Log.Logger = new LoggerConfiguration()
             .MinimumLevel.Information()
-            .MinimumLevel.Override("Microsoft.EntityFrameworkCore.Database.Command", LogEventLevel.Warning)
+            // .MinimumLevel.Override("Microsoft.EntityFrameworkCore.Database.Command", LogEventLevel.Warning)
             .MinimumLevel.Override("Zippysoft.CodeFirst", LogEventLevel.Verbose)
             .Enrich.FromLogContext()
-            .WriteTo.Console()
+            .WriteTo.Console(
+                outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3} - {SourceContext}] {Message:lj}{NewLine}{Exception}")
             .CreateLogger();
         services.AddLogging(lb =>
         {

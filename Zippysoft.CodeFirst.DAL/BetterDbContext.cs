@@ -9,4 +9,14 @@ public class BetterDbContext : DbContext
     }
 
     public DbSet<Aduser>? Users { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Aduser>()
+            .HasIndex(user => user.AlternateEmail, "IX_Users_Email_YahooCom")
+            // No LIkE clauses on filtered indexes
+            // .HasFilter("[AlternateEmail] LIKE '%@yahoo.com'")
+            .IncludeProperties(nameof(Aduser.Id), nameof(Aduser.DisplayName));
+    }
+
 }

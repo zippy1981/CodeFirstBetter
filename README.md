@@ -20,3 +20,5 @@ Instance pipe name:
 
 It is setup. If you instead see `The automatic instance "MSSQLLocalDB" is not created.` Then run `sqllocaldb create MSSQLLocalDB`.
 
+
+Migrations require the ef core tools. Install with `dotnet tool install --global dotnet-ef` and update with `dotnet tool update --global dotnet-ef`.

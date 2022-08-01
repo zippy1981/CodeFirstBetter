@@ -23,21 +23,25 @@ namespace Zippysoft.CodeFirst.DAL.CompiledModels
                 typeof(string),
                 propertyInfo: typeof(Aduser).GetProperty("Id", BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly),
                 fieldInfo: typeof(Aduser).GetField("<Id>k__BackingField", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly),
-                afterSaveBehavior: PropertySaveBehavior.Throw);
+                afterSaveBehavior: PropertySaveBehavior.Throw,
+                maxLength: 36);
+            id.AddAnnotation("Relational:ColumnType", "CHAR");
             id.AddAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.None);
 
             var alternateEmail = runtimeEntityType.AddProperty(
                 "AlternateEmail",
                 typeof(string),
                 propertyInfo: typeof(Aduser).GetProperty("AlternateEmail", BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly),
-                fieldInfo: typeof(Aduser).GetField("<AlternateEmail>k__BackingField", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly));
+                fieldInfo: typeof(Aduser).GetField("<AlternateEmail>k__BackingField", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly),
+                maxLength: 256);
             alternateEmail.AddAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.None);
 
             var displayName = runtimeEntityType.AddProperty(
                 "DisplayName",
                 typeof(string),
                 propertyInfo: typeof(Aduser).GetProperty("DisplayName", BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly),
-                fieldInfo: typeof(Aduser).GetField("<DisplayName>k__BackingField", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly));
+                fieldInfo: typeof(Aduser).GetField("<DisplayName>k__BackingField", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly),
+                maxLength: 64);
             displayName.AddAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.None);
 
             var employeeHireDate = runtimeEntityType.AddProperty(
@@ -52,7 +56,9 @@ namespace Zippysoft.CodeFirst.DAL.CompiledModels
                 "PhoneNumber",
                 typeof(string),
                 propertyInfo: typeof(Aduser).GetProperty("PhoneNumber", BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly),
-                fieldInfo: typeof(Aduser).GetField("<PhoneNumber>k__BackingField", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly));
+                fieldInfo: typeof(Aduser).GetField("<PhoneNumber>k__BackingField", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly),
+                maxLength: 21);
+            phoneNumber.AddAnnotation("Relational:ColumnType", "CHAR");
             phoneNumber.AddAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.None);
 
             var postalCode = runtimeEntityType.AddProperty(
@@ -62,9 +68,22 @@ namespace Zippysoft.CodeFirst.DAL.CompiledModels
                 fieldInfo: typeof(Aduser).GetField("<PostalCode>k__BackingField", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly));
             postalCode.AddAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.None);
 
+            var state = runtimeEntityType.AddProperty(
+                "State",
+                typeof(string),
+                propertyInfo: typeof(Aduser).GetProperty("State", BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly),
+                fieldInfo: typeof(Aduser).GetField("<State>k__BackingField", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly),
+                maxLength: 2);
+            state.AddAnnotation("Relational:ColumnType", "CHAR");
+            state.AddAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.None);
+
             var key = runtimeEntityType.AddKey(
                 new[] { id });
             runtimeEntityType.SetPrimaryKey(key);
+
+            var iX_Users_State_NY = runtimeEntityType.AddIndex(
+                new[] { alternateEmail },
+                name: "IX_Users_State_NY");
 
             return runtimeEntityType;
         }

@@ -30,6 +30,7 @@ namespace Zippysoft.CodeFirst.AD.Importer
                 .RuleFor(o => o.DisplayName, f => f.Name.FullName())
                 .RuleFor(o => o.EmployeeHireDate, f => f.Date.Past(65, DateTime.Now).AddYears(-21))
                 .RuleFor(o => o.PostalCode, f => f.Address.ZipCode())
+                .RuleFor(o => o.State, f => f.Address.StateAbbr())
                 .RuleFor(o => o.AlternateEmail, f=> f.Internet.Email())
                 .RuleFor(o => o.PhoneNumber, f=> f.Phone.PhoneNumber());
 
@@ -38,9 +39,9 @@ namespace Zippysoft.CodeFirst.AD.Importer
             {
                 // This does not seem to save much time, but did before .NET Core
                 this._context.ChangeTracker.AutoDetectChangesEnabled = false;
-                for (short i = 0; i < 10000; i++)
+                for (short i = 0; i < 100; i++)
                 {
-                    tasks.Add(this._context.Users.AddRangeAsync(testUsers.Generate(5000)));
+                    tasks.Add(this._context.Users.AddRangeAsync(testUsers.Generate(50)));
                     logger.LogTrace("Task Count: {Tasks}, Completed: {Completed}", tasks.Count(),
                         tasks.Count(t => t.IsCompleted));
                     if (tasks.Count() > 5)

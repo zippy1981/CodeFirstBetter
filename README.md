@@ -4,10 +4,9 @@ This repo explains how to do code first better. It's used as part ofo my SQL Sat
 
 ## Installing
 
-See if you have your localdb setup buy running `sqllocaldb i MSSQLLocalDB` at a cmd or powershell prompt. If you see output similar to 
+See if you have your localdb setup buy running `sqllocaldb i MSSQLLocalDB` at a cmd or powershell prompt. If you see output similar to
 
-
-```
+```txt
 Name:               MSSQLLocalDB
 Version:            15.0.4153.1
 Shared name:
@@ -20,3 +19,11 @@ Instance pipe name:
 
 It is setup. If you instead see `The automatic instance "MSSQLLocalDB" is not created.` Then run `sqllocaldb create MSSQLLocalDB`.
 
+Now ensure you have ef tools installed by running:
+
+```cmd
+dotnet tool install --global dotnet-ef  
+dotnet tool update --global dotnet-ef 
+```
+
+There are no migration at this point.

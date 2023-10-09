@@ -17,7 +17,7 @@ public partial class BetterDbContextFactory : IDesignTimeDbContextFactory<Better
         Console.WriteLine("==============  Inside BetterDbContextFactory  ==============");
 
         var connectionString =
-            "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=CodFirstBetter;Integrated Security=true;";
+            "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=CodeFirstBetter;Integrated Security=true;";
         var optionsBuilder = new DbContextOptionsBuilder<BetterDbContext>();
         
         optionsBuilder.UseSqlServer(connectionString, opts =>

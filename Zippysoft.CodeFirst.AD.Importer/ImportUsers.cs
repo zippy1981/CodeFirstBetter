@@ -26,7 +26,7 @@ namespace Zippysoft.CodeFirst.AD.Importer
                 //Ensure all properties have rules. By default, StrictMode is false
                 //Set a global policy by using Faker.DefaultStrictMode
                 .StrictMode(true)
-                .RuleFor(o => o.Id, f => Uuid.NewDatabaseFriendly().ToString())
+                .RuleFor(o => o.Id, f => Uuid.NewDatabaseFriendly(UUIDNext.Database.SqlServer).ToString())
                 .RuleFor(o => o.DisplayName, f => f.Name.FullName())
                 .RuleFor(o => o.EmployeeHireDate, f => f.Date.Past(65, DateTime.Now).AddYears(-21))
                 .RuleFor(o => o.PostalCode, f => f.Address.ZipCode())

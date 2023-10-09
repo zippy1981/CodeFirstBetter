@@ -3,12 +3,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Serilog;
-using Serilog.Context;
 using Serilog.Events;
 using Zippysoft.CodeFirst.DAL;
 
 var host = new HostBuilder()
-    .ConfigureFunctionsWorkerDefaults()
     .ConfigureServices(services =>
     {
         Log.Logger = new LoggerConfiguration()
@@ -30,9 +28,10 @@ var host = new HostBuilder()
                 .EnableDetailedErrors()
                 .EnableThreadSafetyChecks()
                 .UseSqlServer(
-                    "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=CodFirstBetter;Integrated Security=true;");
+                    "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=CodeFirstBetter;Integrated Security=true;");
         });
     })
+    .ConfigureFunctionsWorkerDefaults()
     .Build();
 
 using (var scope = host.Services.CreateScope()) {

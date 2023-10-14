@@ -20,12 +20,12 @@ namespace Zippysoft.CodeFirst.DAL.CompiledModels
 
             var id = runtimeEntityType.AddProperty(
                 "Id",
-                typeof(string),
+                typeof(Guid),
                 propertyInfo: typeof(Aduser).GetProperty("Id", BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly),
                 fieldInfo: typeof(Aduser).GetField("<Id>k__BackingField", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly),
+                valueGenerated: ValueGenerated.OnAdd,
                 afterSaveBehavior: PropertySaveBehavior.Throw,
                 maxLength: 36);
-            id.AddAnnotation("Relational:ColumnType", "CHAR");
             id.AddAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.None);
 
             var alternateEmail = runtimeEntityType.AddProperty(
@@ -82,7 +82,7 @@ namespace Zippysoft.CodeFirst.DAL.CompiledModels
             runtimeEntityType.SetPrimaryKey(key);
 
             var iX_Users_State_NY = runtimeEntityType.AddIndex(
-                new[] { alternateEmail },
+                new[] { state },
                 name: "IX_Users_State_NY");
 
             return runtimeEntityType;

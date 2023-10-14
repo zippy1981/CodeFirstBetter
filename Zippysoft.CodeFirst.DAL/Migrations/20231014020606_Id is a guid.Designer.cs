@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Zippysoft.CodeFirst.DAL;
 
@@ -11,9 +12,11 @@ using Zippysoft.CodeFirst.DAL;
 namespace Zippysoft.CodeFirst.DAL.Migrations
 {
     [DbContext(typeof(BetterDbContext))]
-    partial class BetterDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231014020606_Id is a guid")]
+    partial class Idisaguid
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

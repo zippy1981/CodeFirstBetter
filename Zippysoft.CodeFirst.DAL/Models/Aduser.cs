@@ -8,8 +8,7 @@ namespace Zippysoft.CodeFirst.DAL.Models
         [Required]
         [Key]
         [MaxLength(36)]
-        [Column(TypeName = "CHAR")]
-        public string Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
         [MaxLength(64)]
